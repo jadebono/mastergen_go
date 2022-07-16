@@ -7,25 +7,23 @@ A password generator using the SHA256 hash function. Currently a password genera
 ## `Licence`
 
 // SPDX-License-Identifier: MIT  
-Copyright (c) 2021 [Joseph Anthony Debono](joe@jadebono.com)
+Copyright (c) 2022 [Joseph Anthony Debono](joe@jadebono.com)
 
 ---
 
 ## `To Run`
 
-First run npm in the folder containing package.json and mastGen.js and sh.js:
+First compile
 
 ```bash
-npm install
+# the path should be within the usual Go folder setup in src/github.com/user/target
+go mod init go/src/github.com/YOUR_USERNAME/mastergen
+go mod tidy
+# When you are ready to compile. (Note you can build for other architectures as well)
+go build
+# To run the compiled file.
+./mastergen seedPhrase depth
 ```
-
-Then execute with node:
-
-```bash
-node mastGen.js
-```
-
-sh.js is deprecated but provided in case it is necessary to generate an old password generated using it. Otherwise it should not be used as it will not provide the same output that other sha256 function implementations will.
 
 ## `Purpose`
 
@@ -57,6 +55,8 @@ The generated password is the **seventh** hash of this process.
 7. 91c2b32ead801dc707c24b022b8497ca0f0ee2afaf13c6c88dc290a594289d95
 
 Your generated password is: 91c2b32ead801dc707c24b022b8497ca0f0ee2afaf13c6c88dc290a594289d95
+
+Note: mastergen has been tested to a depth of 1e10, taking about 110 seconds to generate the output
 
 ---
 

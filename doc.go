@@ -13,6 +13,20 @@ Copyright (c) 2022 [Joseph Anthony Debono](joe@jadebono.com)
 
 ---
 
+## To Run
+
+First compile
+
+bash:
+# the path should be within the usual Go folder setup in src/github.com/user/target
+go mod init go/src/github.com/YOUR_USERNAME/mastergen
+go mod tidy
+# When you are ready to compile. (Note you can build for other architectures as well)
+go build
+# To run the compiled file.
+./mastergen seedPhrase depth
+
+
 ## Purpose
 
 Good password praxis generally recommends a password of very high entropy for every one of your accounts. A password manager can generate as many highly entropic passwords of significant length as necessary.
@@ -44,18 +58,21 @@ The generated password is the **seventh** hash of this process.
 
 Your generated password is: 91c2b32ead801dc707c24b022b8497ca0f0ee2afaf13c6c88dc290a594289d95
 
+Note: mastergen has been tested to a depth of 1e10, taking about 110 seconds to generate the output.
+
 ---
 
 ## Further Notes
 
 1. Both the phrase and depth fields are inputs of type="password" to hide the inputs from onlookers.
 2. Leaving the depth field blank will submit your phrase through the hash function ONCE.
-3. Input validation has been added to the depth field with the following results:
-   i. Leaving the depth field blank => Depth is set to 0.
-   ii. Inputting text into the depth field => Depth is set to 0.
-   iii. Inputting an float into the depth field => Depth is set to the float rounded to an integer (ex: 3.2 => 3, 4.8 => 5).
+3. Although you should provide nothing but an integer for depth, input validation has been implemented forthis field with the following results:
+   1. Leaving the depth field blank => Depth is set to 0.
+   1. Inputting text into the depth field => Depth is set to 0.
+   1. Inputting an float into the depth field => Depth is set to the float rounded to an integer (ex: 3.2 => 3, 4.8 => 5).
 
 ---
+
 `
 
 var Help string = `
