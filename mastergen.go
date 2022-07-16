@@ -71,7 +71,7 @@ func main() {
 			mstr, n, result := validateArgs(myArgs)
 			// if result is false, an error has occurred, inform the user
 			if !result {
-				fmt.Println("An error has occurred!")
+				fmt.Println(mstr)
 			} else if result {
 				// else if the result if valid, get the hash of your inputs using a 
 				// for-loop from 1 to <= n.
