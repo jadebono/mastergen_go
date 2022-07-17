@@ -3,26 +3,43 @@ package main
 import (
 	"crypto/sha256"
 	"fmt"
+	"math"
 	"os"
 	"strconv"
 	"strings"
 )
 
+//func to validate that the 3rd argument submitted by the user is in fact a valid int.
+// Takes argTwo, a string. If the string is an int, it converts to type int, sets n to
+// it, and returns n. If the string is a float, it rounds it, converts it to an int
+// and then sets n to it and returns it.
 func validateDepth(argTwo string) (n int) {
+	// if argTwo is an int, return n
 	n, err := strconv.Atoi(argTwo)
 	if err == nil {
 		return
-	} else {
-		n = 0
+	} 
+	// if argTwo is not an int, test to see if it is a float
+	testFloat, err := strconv.ParseFloat(argTwo, 64)
+	if err == nil {
+		// if there is no error, round the float and turn it into an int and return it
+		n = int(math.Round(testFloat))
 		return
 	}
+	// if it neither an int or a float, it's test, so set n to 0 and return that
+	n = 0
+	return
 }
 
 // func to validate input. Takes the OS args and returns the master phrase string, the 
 // depth as an int, and a result bool.
 func validateArgs(args []string) (master string, n int, result bool ) {
 	// the valid return consists of len(args) >= 3, with a valid int in args[2]
-	if len(args) >= 3 && validateDepth(args[2]) > 0 {
+	if len(args) == 2 {
+		master = args[1]
+		n = 1
+		result = true
+	} else if len(args) >= 3 && validateDepth(args[2]) > 0 {
 		master = args[1]
 		n = validateDepth(args[2])
 		result = true
