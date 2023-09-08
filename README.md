@@ -60,12 +60,32 @@ Note: mastergen has been tested to a depth of 1e10, taking about 110 seconds to 
 
 ---
 
+## `Versions`
+
+1. mastergen.go - the output is printed to terminal. To compile:
+
+```bash
+go build mastergen.go doc.go
+```
+
+1. cpmastergen.go - output is printed to the terminal and also copied to terminal for easy pasting. To compile cpmastergen.go you need the linux tool **xclip**. To install xclip and compile:
+
+```bash
+sudo apt install xclip
+go build cpmastergen.go doc.go
+```
+
+**Note:** don't forget to clear your terminal and clipboard after you run this program.
+
+---
+
 ## `Further Notes`
 
 1. Both the phrase and depth fields are inputs of type="password" to hide the inputs from onlookers.
-2. Leaving the depth field blank will submit your phrase through the hash function ONCE.
-3. Although you should provide nothing but an integer for depth, input validation has been implemented forthis field with the following results:
-   1. Leaving the depth field blank => Depth is set to 1 (i.e. the phrase will be hashed ONCE).
-   1. Inputting an float into the depth field => Depth is set to the float rounded to an integer (ex: 3.2 => 3, 4.8 => 5).
+1. Leaving the depth field blank will submit your phrase through the hash function ONCE.
+1. Although you should provide nothing but an integer for depth, input validation has been implemented forthis field with the following results:
+   - Leaving the depth field blank => Depth is set to 1 (i.e. the phrase will be hashed ONCE).
+   - Inputting an float into the depth field => Depth is set to the float rounded to an integer (ex: 3.2 => 3, 4.8 => 5).
+1. Code developed on and for Debian based linux distros
 
 ---
