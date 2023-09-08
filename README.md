@@ -11,6 +11,12 @@ Copyright (c) 2022 [Joseph Anthony Debono](joe@jadebono.com)
 
 ---
 
+## `OS`
+
+Code developed on and for Debian based linux distros **only**
+
+---
+
 ## `To Run`
 
 First compile
@@ -86,6 +92,5 @@ go build cpmastergen.go doc.go
 1. Although you should provide nothing but an integer for depth, input validation has been implemented forthis field with the following results:
    - Leaving the depth field blank => Depth is set to 1 (i.e. the phrase will be hashed ONCE).
    - Inputting an float into the depth field => Depth is set to the float rounded to an integer (ex: 3.2 => 3, 4.8 => 5).
-1. Code developed on and for Debian based linux distros
 
 ---
